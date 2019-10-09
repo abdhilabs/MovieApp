@@ -1,4 +1,4 @@
-package com.abdhilabs.movieapp.tvshow
+package com.abdhilabs.movieapp.ui.tvshow
 
 
 import android.os.Bundle

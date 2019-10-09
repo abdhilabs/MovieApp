@@ -1,5 +1,4 @@
-package com.abdhilabs.movieapp.movie
-
+package com.abdhilabs.movieapp.ui.movie
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

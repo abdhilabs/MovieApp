@@ -1,4 +1,4 @@
-package com.abdhilabs.movieapp.favorite
+package com.abdhilabs.movieapp.ui.favorite
 
 
 import android.os.Bundle
