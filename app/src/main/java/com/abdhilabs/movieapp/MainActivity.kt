@@ -1,18 +1,14 @@
 package com.abdhilabs.movieapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.abdhilabs.movieapp.movie.MovieFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.abdhilabs.movieapp.tvshow.TvShowFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    private var content: FrameLayout? = null
 
     private val mOnNavigationItem = BottomNavigationView.OnNavigationItemSelectedListener {item ->
         when(item.itemId){
@@ -20,7 +16,11 @@ class MainActivity : AppCompatActivity() {
                 val fragment = MovieFragment.newInstance()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
-
+            }
+            R.id.action_tv->{
+                val fragment = TvShowFragment()
+                addFragment(fragment)
+                return@OnNavigationItemSelectedListener true
             }
         }
         false
@@ -31,9 +31,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItem)
+        val fragment = MovieFragment()
+        addFragment(fragment)
     }
 
     private fun addFragment(fragment: Fragment) {
-
+        supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(R.anim.design_bottom_sheet_slide_in,R.anim.design_bottom_sheet_slide_out)
+            .replace(R.id.frame_layout,fragment,fragment.javaClass.simpleName)
+            .commit()
     }
 }
