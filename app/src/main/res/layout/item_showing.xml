@@ -8,14 +8,15 @@
         android:id="@+id/card"
         android:layout_width="128dp"
         android:layout_height="200dp"
-        android:elevation="8dp"
+        android:elevation="0dp"
+        android:layout_marginEnd="8dp"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="8dp">
 
         <ImageView
             android:id="@+id/img_poster_showing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </androidx.cardview.widget.CardView>
 
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/card"
         android:text="Title"
-        android:maxLength="10"
+        android:maxLength="15"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true" />

@@ -3,6 +3,7 @@ package com.abdhilabs.movieapp.adapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abdhilabs.movieapp.R
 import com.abdhilabs.movieapp.helper.inflate
@@ -14,10 +15,15 @@ import kotlinx.android.synthetic.main.item_showing.*
 import kotlinx.android.synthetic.main.item_soon.view.*
 
 class GroupAdapter(
-    private val group: ArrayList<Group>,
-    private var showing: ArrayList<MovieResponse.MovieModel>,
-    private var soon: ArrayList<MovieResponse.MovieModel>
+    private val group: ArrayList<Group>
 ) : RecyclerView.Adapter<GroupAdapter.GroupViewHolder>() {
+
+    private var showing: MutableList<MovieResponse.MovieModel> = mutableListOf()
+    private var soon: MutableList<MovieResponse.MovieModel> = mutableListOf()
+
+    fun setShowing(list: MutableList<MovieResponse.MovieModel>) {
+        this.showing = list
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         return GroupViewHolder(parent.inflate(R.layout.group_item))
@@ -35,14 +41,20 @@ class GroupAdapter(
     }
 
     private fun setList(groupRv: RecyclerView, position: Int) {
-        when(position){
+        when (position) {
             0 -> setShowingList(groupRv)
             1 -> setSoonList(groupRv)
         }
     }
 
     private fun setShowingList(groupRv: RecyclerView) {
-
+        val showingAdapter = ShowingAdapter(showing)
+        groupRv.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = showingAdapter
+            isNestedScrollingEnabled = true
+        }
     }
 
     private fun setSoonList(groupRv: RecyclerView) {
