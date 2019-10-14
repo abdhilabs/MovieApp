@@ -11,8 +11,16 @@ class MovieViewModel : ViewModel() {
     internal val error: MutableLiveData<Throwable> = MutableLiveData()
     private val repository = MainRepo()
 
-    fun getList() {
+    fun getListShowing() {
         repository.requestShow({
+            dataList.postValue(it)
+        }, {
+            error.postValue(it)
+        })
+    }
+
+    fun getListSoon() {
+        repository.requestSoon({
             dataList.postValue(it)
         }, {
             error.postValue(it)

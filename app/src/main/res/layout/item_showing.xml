@@ -9,9 +9,9 @@
         android:layout_width="128dp"
         android:layout_height="200dp"
         android:elevation="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/default_small_dp"
         app:cardBackgroundColor="@color/colorPrimary"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="@dimen/default_small_dp">
 
         <ImageView
             android:id="@+id/img_poster_showing"
@@ -27,7 +27,7 @@
         android:layout_below="@id/card"
         android:text="Title"
         android:maxLength="15"
-        android:textSize="16sp"
+        android:textSize="@dimen/default_medium_sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true" />
 

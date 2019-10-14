@@ -3,6 +3,10 @@ package com.abdhilabs.movieapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.abdhilabs.movieapp.ui.favorite.FavoriteFragment
 import com.abdhilabs.movieapp.ui.movie.MovieFragment
 import com.abdhilabs.movieapp.ui.tvshow.TvShowFragment
@@ -13,17 +17,17 @@ class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItem = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.action_movie -> {
+            R.id.navigation_movie -> {
                 val fragment = MovieFragment.newInstance()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.action_tv -> {
+            R.id.navigation_tv -> {
                 val fragment = TvShowFragment()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.action_fav -> {
+            R.id.navigation_fav -> {
                 val fragment = FavoriteFragment()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
@@ -32,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +43,16 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItem)
         val fragment = MovieFragment.newInstance()
         addFragment(fragment)
+//        val navController = findNavController(R.id.nav_host_fragment)
+//
+//        val appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.navigation_movie, R.id.navigation_tv, R.id.navigation_fav
+//            )
+//        )
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//        bottom_navigation.setupWithNavController(navController)
+
     }
 
     private fun addFragment(fragment: Fragment) {

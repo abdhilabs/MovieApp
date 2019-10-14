@@ -46,7 +46,8 @@ class MovieFragment : Fragment() {
         setupRecyclerView()
         observeLiveData()
 
-        viewModel.getList()
+        viewModel.getListShowing()
+        viewModel.getListSoon()
     }
 
     private fun setupRecyclerView() {
@@ -60,6 +61,7 @@ class MovieFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.dataList.observe(this, Observer {
             adapterGroup.setShowing(it?.data!!)
+            adapterGroup.setSoon(it.data)
             adapterGroup.notifyDataSetChanged()
         })
         viewModel.error.observe(this, Observer {

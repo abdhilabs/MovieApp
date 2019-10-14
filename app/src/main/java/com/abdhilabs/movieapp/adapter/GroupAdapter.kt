@@ -25,6 +25,10 @@ class GroupAdapter(
         this.showing = list
     }
 
+    fun setSoon(list: MutableList<MovieResponse.MovieModel>) {
+        this.soon = list
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         return GroupViewHolder(parent.inflate(R.layout.group_item))
     }
@@ -58,7 +62,13 @@ class GroupAdapter(
     }
 
     private fun setSoonList(groupRv: RecyclerView) {
-
+        val soonAdapter = SoonAdapter(soon)
+        groupRv.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = soonAdapter
+            isNestedScrollingEnabled = true
+        }
     }
 
     class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_img_detail">200dp</dimen>
+
+    <dimen name="default_small_dp">8dp</dimen>
+    <dimen name="default_medium_dp">16dp</dimen>
+    <dimen name="default_big_dp">32dp</dimen>
+
+    <dimen name="default_small_sp">8sp</dimen>
+    <dimen name="default_medium_sp">16sp</dimen>
+    <dimen name="default_big_sp">32sp</dimen>
+
+    <dimen name="fifty_dp">50dp</dimen>
+</resources>

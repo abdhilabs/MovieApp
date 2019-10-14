@@ -26,6 +26,22 @@ class MainRepo {
             })
     }
 
+    fun requestSoon(onResult: (MovieResponse) -> Unit, onError: (Throwable) -> Unit){
+        apiService.getMovieSoon()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ApiObserver<MovieResponse>(compositeDisposable){
+                override fun onApiSuccess(data: MovieResponse) {
+                    onResult(data)
+                }
+
+                override fun onApiError(e: Throwable) {
+                    onError(e)
+                }
+
+            })
+    }
+
     fun onDestroy(){
         compositeDisposable.clear()
     }
